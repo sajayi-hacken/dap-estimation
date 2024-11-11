@@ -86,13 +86,10 @@ Base Code Review Time: 57.5 hours
 Additional Checks:
   Configuration Review: 8.0 hours
 		Description: Review of configuration files, environment variables, and settings
-	
 	Dependency Analysis: 8.0 hours
     Description: Review of project dependencies, versions, and security implications
-  
 	Security & Cryptography: 8.0 hours
     Description: Review of security implementations, crypto usage, and potential vulnerabilities
-  
 	Architecture Review: 1.5 hours
     Description: High-level architecture and design pattern review
 
