@@ -81,7 +81,7 @@ Lines of Code by File Type:
 Total Lines of Code: 4,600
 Code Review Speed: 80 lines/hour
 Base Code Review Time: 57.5 hours
-
+Cost: $67,0000
 
 Additional Checks:
   Configuration Review: 8.0 hours
