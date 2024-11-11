@@ -5,8 +5,8 @@ Features
 Code Analysis
 Automatically analyzes repository content
 Counts lines of code by file type
-Supports multiple programming languages including:
 
+Supports multiple programming languages including:
 JavaScript/TypeScript (.js, .ts, .jsx, .tsx)
 Python (.py)
 Java (.java)
@@ -42,7 +42,7 @@ Interactive configuration for additional checks
 
 Installation
 Clone this repository:
-git clone [<repository-url>](https://github.com/sajayi-hacken/dap-estimation/
+git clone https://github.com/sajayi-hacken/dap-estimation/
 
 cd dap-estimation
 
@@ -53,7 +53,7 @@ pip install git python
 Usage
 Basic Usage
 For a local repository:
-bashCopypython estimate.py --path /path/to/repository
+python estimate.py --path /path/to/repository
 
 For a GitHub repository:
 python dapp-estimator.py --url https://github.com/username/repository
@@ -71,7 +71,7 @@ Enter 0 to skip the check
 Add custom checks as needed
 
 Example Output
-Copy=== Code Review Estimation Report ===
+=== Code Review Estimation Report ===
 
 Lines of Code by File Type:
   .js: 1,500 lines
@@ -82,14 +82,18 @@ Total Lines of Code: 4,600
 Code Review Speed: 80 lines/hour
 Base Code Review Time: 57.5 hours
 
+
 Additional Checks:
   Configuration Review: 8.0 hours
-    Description: Review of configuration files, environment variables, and settings
-  Dependency Analysis: 8.0 hours
+		Description: Review of configuration files, environment variables, and settings
+	
+	Dependency Analysis: 8.0 hours
     Description: Review of project dependencies, versions, and security implications
-  Security & Cryptography: 8.0 hours
+  
+	Security & Cryptography: 8.0 hours
     Description: Review of security implementations, crypto usage, and potential vulnerabilities
-  Architecture Review: 1.5 hours
+  
+	Architecture Review: 1.5 hours
     Description: High-level architecture and design pattern review
 
 Additional Checks Total Time: 25.5 hours
@@ -151,5 +155,4 @@ MIT License - feel free to use this tool for any purpose.
 
 Acknowledgments
 Uses GitPython for repository management
-Inspired by real-world code review practices
 Default timings based on industry averages
