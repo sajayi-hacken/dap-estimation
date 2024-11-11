@@ -56,7 +56,7 @@ For a local repository:
 bashCopypython estimate.py --path /path/to/repository
 
 For a GitHub repository:
-bashCopypython estimate.py --url https://github.com/username/repository
+python dapp-estimator.py --url https://github.com/username/repository
 Interactive Configuration
 When you run the tool, it will:
 
