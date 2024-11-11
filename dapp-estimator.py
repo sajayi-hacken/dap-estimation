@@ -1,5 +1,3 @@
-import os
-import argparse
 from pathlib import Path
 import git
 import logging
@@ -203,9 +201,13 @@ class CodeReviewEstimator:
         return code_review_hours, additional_hours, days
     
     def generate_report(self, extension_counts: Dict[str, int]) -> str:
-        """Generate a formatted report of the analysis."""
+        """Generate a formatted report of the analysis including cost estimation."""
+        HOURLY_RATE = 2000  # $2,000 per hour
+        
         total_lines = sum(extension_counts.values())
         code_review_hours, additional_hours, days = self.estimate_review_time(total_lines)
+        total_hours = code_review_hours + additional_hours
+        total_cost = total_hours * HOURLY_RATE
         
         report = [
             "\n=== Code Review Estimation Report ===\n",
@@ -218,20 +220,27 @@ class CodeReviewEstimator:
         report.extend([
             f"\nTotal Lines of Code: {total_lines:,}",
             f"Code Review Speed: {self.LINES_PER_HOUR} lines/hour",
-            f"Base Code Review Time: {code_review_hours:.1f} hours"
+            f"Base Code Review Time: {code_review_hours:.1f} hours",
+            f"Base Code Review Cost: ${(code_review_hours * HOURLY_RATE):,.2f}"
         ])
         
         if self.additional_checks:
             report.append("\nAdditional Checks:")
+            additional_check_costs = 0
             for check in self.additional_checks:
-                report.append(f"  {check.name}: {check.hours:.1f} hours")
+                check_cost = check.hours * HOURLY_RATE
+                additional_check_costs += check_cost
+                report.append(f"  {check.name}: {check.hours:.1f} hours (${check_cost:,.2f})")
                 report.append(f"    Description: {check.description}")
             
             report.append(f"\nAdditional Checks Total Time: {additional_hours:.1f} hours")
+            report.append(f"Additional Checks Total Cost: ${additional_check_costs:,.2f}")
         
         report.extend([
-            f"\nTotal Estimated Review Time: {code_review_hours + additional_hours:.1f} hours",
-            f"Working Days Required: {days:.1f} (8-hour days)"
+            f"\nTotal Estimation Summary:",
+            f"Total Review Time: {total_hours:.1f} hours",
+            f"Working Days Required: {days:.1f} (8-hour days)",
+            f"Total Project Cost: ${total_cost:,.2f}"
         ])
         
         return "\n".join(report)
